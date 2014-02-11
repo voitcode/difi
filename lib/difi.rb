@@ -42,6 +42,7 @@ module Difi
   end
 
   # Search for entries from the current dataset with the given fields
+  # Input is expected to be a Hash
   def search(fields)
     get "?" + URI.escape(fields.collect{|k,v| "#{k}=#{v}"}.join('&'))
     json
