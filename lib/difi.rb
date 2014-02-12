@@ -18,7 +18,7 @@ module Difi
 
   # The API connection
   def conn
-    @@conn ||= Faraday.new(:url => 'http://sushi.com') do |faraday|
+    @@conn ||= Faraday.new(:url => @@url) do |faraday|
       faraday.request   :url_encoded            # form-encode POST params
       faraday.response  :logger                 # log requests to STDOUT
       faraday.adapter   :excon                  # make requests with Excon
