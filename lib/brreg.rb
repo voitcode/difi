@@ -2,6 +2,10 @@
 module Brreg
   class Registry
     extend Difi
+
+    def self.dataset
+      "brreg/enhetsregisteret"
+    end
   end
 
   # The public Norwegian business registry dataset

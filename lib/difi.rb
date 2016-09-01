@@ -13,7 +13,7 @@ module Difi
 
   # The API source URL
   def url
-    @@url ||= "http://hotell.difi.no/api/json/"
+    @@url ||= "http://hotell.difi.no/api/json"
   end
 
   # The API connection
@@ -32,19 +32,19 @@ module Difi
 
   # Perform a GET HTTP query on the current dataset
   def get(query)
-    @@response = conn.get("#{url}/#{dataset}#{query}")
+    @@response = conn.get([url, dataset, query].join("/"))
   end
 
   # Return the fields of the current dataset
   def fields
-    get "/fields"
+    get "fields"
     json
   end
 
   # Search for entries from the current dataset with the given fields
-  # Input is expected to be a Hash
-  def search(fields)
-    get "?" + URI.escape(fields.collect{|k,v| "#{k}=#{v}"}.join('&'))
+  # Input is expected to be a String
+  def search(string)
+    @@response = conn.get [url, dataset].join("/") + "?query=" + URI.escape(string)
     json
   end
 
