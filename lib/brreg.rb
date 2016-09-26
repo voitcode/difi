@@ -14,5 +14,8 @@ module Brreg
 
   # The public Norwegian business registry dataset - sub units
   class Underenheter < Registry
+    def self.dataset
+      "brreg/underenheter"
+    end
   end
 end
