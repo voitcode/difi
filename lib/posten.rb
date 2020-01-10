@@ -32,6 +32,6 @@ class Posten
   end
 
   def self.parse
-    @@all_lines ||= lines.collect {|l| l.parse_csv }
+    @@all_lines ||= lines.collect {|l| CSV.parse(l) }
   end
 end
